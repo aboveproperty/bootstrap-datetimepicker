@@ -63,15 +63,6 @@ module.exports = function (grunt) {
             }
         },
 
-        jscs: {
-            all: [
-                'Gruntfile.js', 'src/js/*.js'
-            ],
-            options: {
-                config: '.jscs.json'
-            }
-        },
-
         less: {
             production: {
                 options: {
@@ -96,60 +87,17 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'jscs']);
+    grunt.registerTask('default', ['jshint']);
 
     // travis build task
     grunt.registerTask('build:travis', [
         // code style
-        'jshint', 'jscs'
+        'jshint'
     ]);
 
     // Task to be run when building
     grunt.registerTask('build', [
-        'jshint', 'jscs', 'uglify', 'less'
+        'jshint', 'uglify', 'less'
     ]);
 
-    grunt.registerTask('nuget', 'Create a nuget package', function () {
-        var target = grunt.option('target') || 'less', done = this.async();
-        if (target === 'less') {
-            grunt.util.spawn({
-                cmd: 'src/nuget/nuget.exe',
-                args: [
-                    'pack',
-                    'src/nuget/Bootstrap.v3.Datetimepicker.nuspec',
-                    '-OutputDirectory',
-                    'build/nuget',
-                    '-Version',
-                    grunt.config.get('pkg').version
-                ]
-            }, function (error, result) {
-                if (error) {
-                    grunt.log.error(error);
-                } else {
-                    grunt.log.write(result);
-                }
-                done();
-            });
-        }
-        else {
-            grunt.util.spawn({
-                cmd: 'src/nuget/nuget.exe',
-                args: [
-                    'pack',
-                    'src/nuget/Bootstrap.v3.Datetimepicker.CSS.nuspec',
-                    '-OutputDirectory',
-                    'build/nuget',
-                    '-Version',
-                    grunt.config.get('pkg').version
-                ]
-            }, function (error, result) {
-                if (error) {
-                    grunt.log.error(error);
-                } else {
-                    grunt.log.write(result);
-                }
-                done();
-            });
-        }
-    });
 };

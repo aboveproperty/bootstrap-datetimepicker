@@ -15,6 +15,12 @@
 .bootstrap-datetimepicker-widget.timepicker-sbs {
   width: 600px;
 }
+.bootstrap-datetimepicker-widget.inline {
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 250px;
+}
 .bootstrap-datetimepicker-widget.bottom:before {
   content: '';
   display: inline-block;
@@ -143,7 +149,7 @@
   content: '';
   display: inline-block;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #428bca;
+  border-bottom: 7px solid #337ab7;
   border-top-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: 4px;
@@ -151,7 +157,7 @@
 }
 .bootstrap-datetimepicker-widget td.active,
 .bootstrap-datetimepicker-widget td.active:hover {
-  background-color: #428bca;
+  background-color: #337ab7;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -177,7 +183,7 @@
   background: #eeeeee;
 }
 .bootstrap-datetimepicker-widget td span.active {
-  background-color: #428bca;
+  background-color: #337ab7;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }

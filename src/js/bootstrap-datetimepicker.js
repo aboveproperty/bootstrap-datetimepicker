@@ -372,7 +372,7 @@
           errored = false;
           picker.element.trigger({
             type: 'dp.change',
-            date: picker.unset ? null : moment(picker.date),
+            date: moment(picker.date),
             oldDate: moment(oldDate)
           });
 
@@ -1286,6 +1286,7 @@
         if (!newDate) {
           picker.unset = true;
           set();
+          return;
         } else {
           picker.unset = false;
         }

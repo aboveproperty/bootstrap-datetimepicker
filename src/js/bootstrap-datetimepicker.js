@@ -507,7 +507,11 @@
                 }
               }
             }
-            row.append('<td class="day' + clsName + '">' + prevMonth.date() + '</td>');
+            var dayHtml = $('<td class="day' + clsName + '">' + prevMonth.date() + '</td>');
+            if(!!picker.options.beforeFillDay && picker.options.beforeFillDay instanceof Function){
+              picker.options.beforeFillDay(prevMonth, dayHtml);
+            }
+            row.append(dayHtml);
 
             currentDate = prevMonth.date();
             prevMonth.add(1, 'd');
